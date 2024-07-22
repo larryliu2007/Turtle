@@ -1,0 +1,20 @@
+import turtle, random
+
+window = turtle.Screen()
+myTurtle = turtle.Turtle()
+
+edgeLength = int(input("Enter the radius of your first circle: "))
+edgeAmount = int(input("Enter the amount of times you want to circle around: "))
+
+myColours = ["red", "blue", "green", "yellow"]
+
+for i in range (0, edgeAmount):
+    randColour = random.randint(0, 3)
+    myTurtle.pencolor(myColours[randColour])
+    myTurtle.circle(edgeLength)
+    myTurtle.penup()
+    myTurtle.right(90)
+    myTurtle.forward(10)
+    myTurtle.pendown()
+    myTurtle.left(90)
+    edgeLength += 10
