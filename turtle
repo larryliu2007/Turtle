@@ -1,14 +1,26 @@
-import turtle, random
+import turtle
+import random
 
 window = turtle.Screen()
 myTurtle = turtle.Turtle()
 
-edgeLength = int(input("Enter the radius of your first circle: "))
-edgeAmount = int(input("Enter the amount of times you want to circle around: "))
+def get_valid_input(prompt, min_value):
+    while True:
+        try:
+            value = int(input(prompt))
+            if value >= min_value:
+                return value
+            else:
+                print(f"Please enter a number greater than or equal to {min_value}.")
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
+
+edgeLength = get_valid_input("Enter the radius of your first circle: ", 1)
+edgeAmount = get_valid_input("Enter the amount of times you want to circle around: ", 1)
 
 myColours = ["red", "blue", "green", "yellow"]
 
-for i in range (0, edgeAmount):
+for i in range(edgeAmount):
     randColour = random.randint(0, 3)
     myTurtle.pencolor(myColours[randColour])
     myTurtle.circle(edgeLength)
@@ -18,3 +30,5 @@ for i in range (0, edgeAmount):
     myTurtle.pendown()
     myTurtle.left(90)
     edgeLength += 10
+
+window.mainloop()
